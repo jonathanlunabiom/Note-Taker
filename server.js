@@ -43,8 +43,12 @@ app.post('/api/notes',(req,res)=>{
           console.log(note.id)
           parsedData.push(note);
           console.log(parsedData)
-          fs.writeFile('./db/db.json', JSON.stringify(parsedData), (err) =>
-          err ? console.error(err) : console.info(`\nData written`))
+          fs.writeFile('./db/db.json', JSON.stringify(parsedData), (err) =>{
+            err ? console.error(err) : console.info(`\nData written`)
+            res.json(note)
+          }
+          
+          )
         }
     });
 
@@ -61,8 +65,10 @@ app.delete('/api/notes/:note',(req,res)=>{
         }else{
             const parseit = JSON.parse(data);
             const deleted = parseit.filter(some => some.id != id)
-            fs.writeFile('./db/db.json', JSON.stringify(deleted), (err) =>
-            err ? console.error(err) : console.info(`\nData written`))
+            fs.writeFile('./db/db.json', JSON.stringify(deleted), (err) =>{
+                err ? console.error(err) : console.info(`\nData written`)
+                res.json(id)
+            })
         }
     })
 })
