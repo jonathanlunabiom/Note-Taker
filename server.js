@@ -40,24 +40,21 @@ app.post('/api/notes',(req,res)=>{
         } else {
           const parsedData = JSON.parse(data);
           note.id = parsedData.length + 1
-          console.log(note.id)
           parsedData.push(note);
-          console.log(parsedData)
           fs.writeFile('./db/db.json', JSON.stringify(parsedData), (err) =>{
-            err ? console.error(err) : console.info(`\nData written`)
+            err ? console.error(err) : console.info(`\nData written with the title "${note.title}"`)
             res.json(note)
           }
           
           )
         }
     });
-
-
 })
 
 
 app.delete('/api/notes/:note',(req,res)=>{
-    const id = req.params.note;
+    console.log(`${req.method} request received`)
+    const id = req.params.note
 
     fs.readFile('./db/db.json','utf8', (err, data) => {
         if (err){
@@ -66,7 +63,7 @@ app.delete('/api/notes/:note',(req,res)=>{
             const parseit = JSON.parse(data);
             const deleted = parseit.filter(some => some.id != id)
             fs.writeFile('./db/db.json', JSON.stringify(deleted), (err) =>{
-                err ? console.error(err) : console.info(`\nData written`)
+                err ? console.error(err) : console.info(`\nData deleted, id: ${id}`)
                 res.json(id)
             })
         }
