@@ -5,6 +5,7 @@
 ## Table of Contents
 - [Description](#description)
 - [Usage](#usage)
+- [Screenshot](#screenshot)
 - [Test](#test)
 - [License](#license)
 
@@ -21,6 +22,9 @@ Note-Taker is the latest way to have your own notes up to date. Add them, edit t
 7. A save button will appear on the right corner next to the "+".
 8. The notes will be save on the left side of the page.
 9. You can add more notes, edit them or even delete.
+
+## Screenshot
+![Note-Taker](./assets/Screenshot.png)
 
 ## Test
 [Webpage](https://note-take-aplication-3bc4142e10c1.herokuapp.com)
