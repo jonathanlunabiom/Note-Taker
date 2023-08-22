@@ -3,7 +3,7 @@ const path = require('path')
 const savedjson = require('./db/db.json')
 const fs = require('fs');
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
@@ -44,9 +44,7 @@ app.post('/api/notes',(req,res)=>{
           fs.writeFile('./db/db.json', JSON.stringify(parsedData), (err) =>{
             err ? console.error(err) : console.info(`\nData written with the title "${note.title}"`)
             res.json(note)
-          }
-          
-          )
+          })
         }
     });
 })
